@@ -40,7 +40,7 @@ const char* const MESSAGES[] =
         "mougeyc_2013:Un grand MERCI pour votre comprehension et vos contributions dans la vie etudiante de l'ecole!",
         "faikm_2013:Je vous souhaite bonne continuation dans votre vie, je vous remercie du travail que vous avez accompli, en particulier l'aide que vous m'avez apporte lorsque j'ai perdu mes courriels :)",
         "louisthi_2012:Ah il va nous manquer, ton sourire bienveillant ! Mais t'as bien merite, de prendre du bon temps !",
-        "champeaj_2011:Merci pour ces annees passees a l'imag a gerer tous nos problemes informatiques! Bonne continuation dans la vie et bonne retraite, profitez en bien!",
+        "champeaj_2011:Merci pour ces annees passees a l'imag a gerer tous nos problemes informatiques ! Bonne continuation dans la vie et bonne retraite, profitez en bien !  ",
         "siebmanb_2011:Merci pour le soutien sans faille au moindre probleme et pour nous avoir permis de travailler dans d'excellentes conditions !",
         "jouhris_2010:Je vous remercie infiniment pour tout le travail que vous avez fourni au sein de l'equipe informatique de notre chere ecole ENSIMAG et je vous souhaite bonne retraite pleine de joie et de bonheur.",
         "lesquera_2010:Merci!!!",
@@ -63,7 +63,11 @@ const char* const MESSAGES[] =
         "tambourb_2011:Hi! je suis nouveau @ l'Ensimag, mais j'entends plein de bonnes choses sur vous :) Merciiii, au revoir et bon repos",
         "anzalaya_2010:export ANZALAYA=$ANZALAYA:\"Linux addict\" ; echo \"Merci\"",
         "frichote_2011:Merci pour votre serieux et votre disponibilite! Profitez bien de votre retraite bien meritee !!",
-        "dejeand_2011:Merci Cath pour tout ce que vous nous avez apporte a l'ecole."
+        "dejeand_2011:Merci Cath pour tout ce que vous nous avez apporte a l'ecole.",
+        "badedikd_2010:Merci d'avoir ete presente quand j'ai eu besoin de vous.",
+        "elabedm_2012:Merci ! Votre gentillesse et la qualite de vos competences vont beaucoup me manquer (et a toute l'Ensimag).Je vous souhaite une tres heureuse retraite",
+        "fusader_2010:May the force be with you",
+        "notheiss_2013:C'etait mieux avant! Merci pour tout."
 };
 
 const unsigned int NBMESSAGES = sizeof(MESSAGES)/sizeof(char *);
