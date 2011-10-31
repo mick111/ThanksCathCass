@@ -1,0 +1,4 @@
+To compile, just run:
+	make
+        
+To run, you have to be on a ANSI/VT100 compatible terminal to print colors with escape characters.
