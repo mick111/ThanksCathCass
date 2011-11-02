@@ -67,7 +67,10 @@ const char* const MESSAGES[] =
         "badedikd_2010:Merci d'avoir ete presente quand j'ai eu besoin de vous.",
         "elabedm_2012:Merci ! Votre gentillesse et la qualite de vos competences vont beaucoup me manquer (et a toute l'Ensimag).Je vous souhaite une tres heureuse retraite",
         "fusader_2010:May the force be with you",
-        "notheiss_2013:C'etait mieux avant! Merci pour tout."
+        "notheiss_2013:C'etait mieux avant! Merci pour tout.",
+        "labrikr_2011: Nous vous remercions vivement pour tout ce que vous avez fait pour nous, et nous vous souhaitons une vie agreable",
+        "boccardf_2012:Merci pour tout votre travail. Je vous souhaite une bonne retraite bien meritee.",
+        "evrardh_2011:Merci pour votre disponibilite, votre bonne humeur et votre reactivite! Je vous souhaite une retraite epanouissante."
 };
 
 const unsigned int NBMESSAGES = sizeof(MESSAGES)/sizeof(char *);
