@@ -10,8 +10,11 @@
 extern FILE * FileDebug;
 extern FILE * FileOutput;
 extern FILE * FileError;
-
+#ifdef NO_TIMEINTERVAL
+#define SLEEP_BETWEEN_TWO_BOXES 0
+#else
 #define SLEEP_BETWEEN_TWO_BOXES 2 
+#endif
 
 const char REALISEPAR[] = "Realise par les V\x1b[2mieux\x1b[0mC\x1b[2mons\x1b[0mA\x1b[2migris\x1b[0m2010 <ThxCathCass@gmail.com>";
 const char MERCI[] = "Merci cathcass !";
@@ -61,9 +64,9 @@ void verifyTerminalSize(void)
                         setScreenWidth(ws.ws_col);
                         
                         fprintf(FileOutput, "La taille de votre terminal "
-                                "enregistrée est : [%dx%d].\nLancement dans 2 secondes...\n",
+                                "enregistrée est : [%dx%d].\nLancement dans 1 seconde...\n",
                                 getScreenWidth(), getScreenHeight());
-                        sleep(2);       
+                        sleep(1);       
                 }
         }
 }
@@ -76,7 +79,11 @@ int main()
         unsigned int l_uiMesgNb = 0;
         
 #ifdef DEBUG
+#ifdef ONLYERRORS
+        FileDebug      = NULL;
+#else
         FileDebug      = stderr;
+#endif
         FileOutput     = stdout;
         FileError      = stderr;
 #else
