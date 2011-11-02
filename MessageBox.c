@@ -376,8 +376,11 @@ static int AnalyseString(const char * const par_pszMessageString,   /* IN  */
 /******************************************************************************/
 /*                              Messages Boxes                                */
 /******************************************************************************/
-
-#define NS_DURATION_OF_PRINTING_CHAR 20000000L
+#ifdef NO_TIMEINTERVAL
+#define NS_DURATION_OF_PRINTING_CHAR 0L
+#else
+#define NS_DURATION_OF_PRINTING_CHAR 15000000L
+#endif
 
 typedef struct MessageBox_S
 {
@@ -690,6 +693,12 @@ static int findNewPosition(MessageBox_T *par_sMessageBox)
         if (g_uiLastMsgBoxPosY >= l_uiSizeY)
         {
                 l_uiNbLinesOnTop = g_uiLastMsgBoxPosY - (l_uiSizeY-1);
+                
+                /* Removing lines if last mesgbox is too low */
+                if (g_uiLastMsgBoxPosY > g_uiScreenHeight - (l_uiSizeY-1))
+                {
+                        l_uiNbLinesOnTop -= g_uiLastMsgBoxPosY - (g_uiScreenHeight - (l_uiSizeY-1));
+                }
         }
         
         
@@ -708,13 +717,18 @@ static int findNewPosition(MessageBox_T *par_sMessageBox)
         /* Deducting the number of lines available in MIDDLE */
         if (l_uiNbColumnsOnLeft + l_uiNbColumnsOnRight)
         {
+                l_uiNbLinesOnMiddle = g_uiLastMsgBoxSizeY + (l_uiSizeY-1);
+                
+                /* Removing lines if last mesgbox is too high */
                 if (g_uiLastMsgBoxPosY < (l_uiSizeY-1))
                 {
-                        l_uiNbLinesOnMiddle = g_uiLastMsgBoxSizeY + g_uiLastMsgBoxPosY;
+                        l_uiNbLinesOnMiddle -= (l_uiSizeY-1) - g_uiLastMsgBoxPosY;
                 }
-                else
+                
+                /* Removing lines if last mesgbox is too low */
+                if (g_uiLastMsgBoxPosY + g_uiLastMsgBoxSizeY > g_uiScreenHeight - (l_uiSizeY-1))
                 {
-                        l_uiNbLinesOnMiddle = g_uiLastMsgBoxSizeY + (l_uiSizeY-1);
+                        l_uiNbLinesOnMiddle -= g_uiLastMsgBoxPosY + g_uiLastMsgBoxSizeY + (l_uiSizeY-1) -g_uiScreenHeight;
                 }
         }
         
@@ -741,15 +755,13 @@ static int findNewPosition(MessageBox_T *par_sMessageBox)
         
         
         /* Choosing a random Y position */
-	srand((unsigned int)time(NULL));
-        
         l_uiRandomNumberY  = (unsigned int) rand();
         l_uiRandomNumberY %= l_uiNbLinesOnTop + l_uiNbLinesOnMiddle + l_uiNbLinesOnBottom;
         
-        if ((l_uiNbLinesOnMiddle != 0) && (l_uiRandomNumberY >= l_uiNbLinesOnTop))
+        if ((l_uiNbLinesOnMiddle == 0) && (l_uiRandomNumberY >= l_uiNbLinesOnTop))
         {
-                par_sMessageBox->uiPosY = l_uiRandomNumberY + 
-                g_uiLastMsgBoxSizeY + (l_uiSizeY-1);
+                par_sMessageBox->uiPosY = l_uiRandomNumberY - l_uiNbLinesOnTop + 
+                g_uiLastMsgBoxPosY + g_uiLastMsgBoxSizeY;
         }
         else 
         {
@@ -1053,7 +1065,6 @@ static int initMessageBox(const char * const par_pszMessage, /* IN  */
         }
         
         /* Choosing the color */
-	srand((unsigned int)time(NULL));
         l_uiRandomNb = (unsigned int) rand();
         par_psMessageBox->uiColor = l_uiRandomNb % (sizeof(AUTHORIZED_COLORS)/sizeof(AUTHORIZED_COLORS[0]));
         
