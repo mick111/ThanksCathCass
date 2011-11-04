@@ -67,6 +67,7 @@ const char* const MESSAGES[] =
         "badedikd_2010:Merci d'avoir ete presente quand j'ai eu besoin de vous.",
         "elabedm_2012:Merci ! Votre gentillesse et la qualite de vos competences vont beaucoup me manquer (et a toute l'Ensimag).Je vous souhaite une tres heureuse retraite",
         "fusader_2010:May the force be with you",
+        "casatir_2011:Merci pour tout et bon vent !",
         "notheiss_2013:C'etait mieux avant! Merci pour tout."
 };
 
