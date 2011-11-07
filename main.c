@@ -10,20 +10,14 @@
 extern FILE * FileDebug;
 extern FILE * FileOutput;
 extern FILE * FileError;
-#ifdef NO_TIMEINTERVAL
-#define SLEEP_BETWEEN_TWO_BOXES 0
-#else
+
 #define SLEEP_BETWEEN_TWO_BOXES 2 
-#endif
 
 const char REALISEPAR[] = "Realise par les V\x1b[2mieux\x1b[0mC\x1b[2mons\x1b[0mA\x1b[2migris\x1b[0m2010 <ThxCathCass@gmail.com>";
 const char MERCI[] = "Merci cathcass !";
 const char MESSAGESPAR[] = "Messages par les eleves de l'Ensimag";
 
-
-void verifyTerminalSize(void);
-
-void verifyTerminalSize(void)
+static void verifyTerminalSize(void)
 {
         setScreenHeight(MIN_LINESIZE);
         setScreenWidth(MIN_COLUMNSIZE);
@@ -78,20 +72,9 @@ int main()
         int l_iResult = 0;
         unsigned int l_uiMesgNb = 0;
         
-#ifdef DEBUG
-#ifdef ONLYERRORS
-        FileDebug      = NULL;
-#else
-        FileDebug      = stderr;
-#endif
-        FileOutput     = stdout;
-        FileError      = stderr;
-#else
         FileDebug      = NULL;
         FileOutput     = stdout;
         FileError      = NULL;
-#endif
-        
         
         /* Verify Window size */
         verifyTerminalSize();
@@ -105,20 +88,7 @@ int main()
         /* Printing all messages */
         for (l_uiMesgNb = 0; l_uiMesgNb < NBMESSAGES; l_uiMesgNb++) 
         {
-#ifdef DEBUG
-                if (FileDebug)
-                {
-                        fprintf(FileDebug, "Msg (%d)\n", g_auiOrdre[l_uiMesgNb]);
-                }
-#endif
-                
                 l_iResult = CreateMessageBox(MESSAGES[g_auiOrdre[l_uiMesgNb]]);
-#ifdef DEBUG
-                if (FileDebug) 
-                {
-                        fprintf(FileDebug, "CreateMessageBox returned %d\n", l_iResult);
-                }
-#endif
                 sleep(SLEEP_BETWEEN_TWO_BOXES);
         }
         
