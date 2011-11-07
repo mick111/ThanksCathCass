@@ -74,7 +74,8 @@ const char* const MESSAGES[] =
         "bessong_2011:Merci pour toutes ces annees au service des eleves. Ce fut un plaisir de travailler avec vous sur Zenith et le Kiosk. Gabriel.",
         "kouassiw_2013:ce fut un plaisir CC et bonne retraite.",
         "casatir_2011:Merci pour tout et bon vent !",
-        "notheiss_2013:C'etait mieux avant! Merci pour tout."
+        "notheiss_2013:C'etait mieux avant! Merci pour tout.",
+        "janviera_2011:Merci pour votre soutien, votre ecoute et votre cooperation. Profitez bien de votre nouveau temps libre !"
 };
 
 const unsigned int NBMESSAGES = sizeof(MESSAGES)/sizeof(char *);
